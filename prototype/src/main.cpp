@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <string>
+#include <limits>
+#include <cctype>
 
 using namespace std;
 
@@ -19,6 +21,8 @@ const int BOARD_SIZE = 8;
  */
 
 enum Tile { vacant, white, black };
+
+bool IsValidNotation(const string& userInput);
 
 /*!
  * \brief Draws the current board state to the terminal.
@@ -38,11 +42,50 @@ int main(){
     
     // 2D array tracking board state
     Tile board[BOARD_SIZE][BOARD_SIZE];
+    
+    // boolean to check the game loop
+    bool running = true;
 
     InitBoard(board);
     DrawBoard(board);
 
+    string userInput;
+
+    for(;;){
+        cout << "Enter a move in algebraic notation: ";
+        if (cin >> userInput && IsValidNotation(userInput)){
+            break;
+        } else {
+            cout << "Invalid input detected. Your input should look something like: e4" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+    cout << "Your input was: " << userInput << "\n";
+
+
     return 0;
+}
+
+bool IsValidNotation(const string& userInput){
+
+    // length check
+    if (userInput.length() != 2){
+        return false;
+    }
+    // char at index 0 should be a letter between a-h
+    int file = tolower(userInput.at(0));
+    if (file < 97 || file > 104){
+        return false;
+    }
+
+    // char at index 1 should be a number between 1-8
+    char rank = userInput.at(1);
+    if (rank < '1' || rank > '8'){
+        return false;
+    }
+
+    return true;
 }
 
 //! \copydoc InitBoard
