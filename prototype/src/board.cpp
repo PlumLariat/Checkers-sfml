@@ -21,6 +21,13 @@ void Board::addPieceToTile(unsigned int x, unsigned int y, Color color){
     this->tiles[x][y] = p;
 }
 
+void Board::removePieceFromTile(unsigned int x, unsigned int y) {
+    if (x >= BOARD_SIZE || y >= BOARD_SIZE) {
+        throw std::out_of_range("Given tile coords out of bounds.");
+    }
+    this->tiles[x][y] = std::nullopt;
+}
+
 void Board::Init(){
 
     // assemble white's back row pieces

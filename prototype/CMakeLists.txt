@@ -13,9 +13,10 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 add_library(proto_lib
-    src/checkers.cpp
     src/board.cpp
     src/piece.cpp
+    src/move.h
+    src/move.cpp
 )
 target_include_directories(proto_lib PUBLIC src/)
 

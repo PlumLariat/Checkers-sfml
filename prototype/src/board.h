@@ -10,6 +10,7 @@ class Board {
     private:
         std::optional<Piece> tiles[BOARD_SIZE][BOARD_SIZE];
         void addPieceToTile(unsigned int x, unsigned int y, Color color);
+        void removePieceFromTile(unsigned int x, unsigned int y);
     public:
         Board();
         ~Board();

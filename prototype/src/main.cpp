@@ -10,7 +10,6 @@
 #include <limits>
 
 #include "board.h"
-#include "checkers.h"
 
 using namespace std;
 
@@ -26,17 +25,17 @@ int main(){
 
     string userInput;
 
-    for(;;){
-        cout << "Enter a move in algebraic notation: ";
-        if (cin >> userInput && IsValidNotation(userInput)){
-            break;
-        } else {
-            cout << "Invalid input detected. Your input should look something like: e4" << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-    }
-    cout << "Your input was: " << userInput << "\n";
+    // for(;;){
+    //     cout << "Enter a move in algebraic notation: ";
+    //     if (cin >> userInput && IsValidNotation(userInput)){
+    //         break;
+    //     } else {
+    //         cout << "Invalid input detected. Your input should look something like: e4" << endl;
+    //         cin.clear();
+    //         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    //     }
+    // }
+    // cout << "Your input was: " << userInput << "\n";
 
 
     return 0;
